@@ -1,4 +1,4 @@
-//Übung 4, Aufgabe 1: "dezAlsBin(LK,MS).c" (02.06.2024) (Autoren:  Leif Kendelbacher, Mattis Schreiner)
+//Übung 4, Aufgabe 1: "dezAlsBin(LK,MS).c" (02.06.2024) (Autoren:  Leif Kendelbacher, Mattis Schreiner) änderung
 //Programm zur Umrechnung einer Dezimalzahl in eine Binärzahl
 #include <stdio.h>
 #include <math.h>
@@ -30,7 +30,7 @@ main() {
 	//Startnachricht
 	printf("******************************************************\n");
 	printf("*                                                    *\n");
-	printf("*              Dezimalzahl als Bin\x84rzahl             *\n");
+	printf("*              Dezimalzahl als Bin\x84rzahlen             *\n");
 	printf("*                                                    *\n");
 	printf("******************************************************\n\n");
 
