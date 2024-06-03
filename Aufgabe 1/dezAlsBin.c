@@ -30,7 +30,7 @@ main() {
 	//Startnachricht
 	printf("******************************************************\n");
 	printf("*                                                    *\n");
-	printf("*              Dezimalzahl als Bin\x84rzahltest             *\n");
+	printf("*              Dezimalzahl als Bin\x84rzahl             *\n");
 	printf("*                                                    *\n");
 	printf("******************************************************\n\n");
 
