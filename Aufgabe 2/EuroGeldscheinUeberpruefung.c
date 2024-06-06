@@ -10,18 +10,22 @@ int main() {
 	//Startnachricht
 	printf("******************************************************\n");
 	printf("*                                                    *\n");
-	printf("*       %cberprüfung eines Euro-Geldscheines          *\n", '\x9a');
+	printf("*       %cberpr%cfung eines Euro-Geldscheines          *\n", '\x9a', '\x81');
 	printf("*                                                    *\n");
 	printf("******************************************************\n\n");
 
+	eingabeSeriennummer();
 
 	return 0;
 }
 
 int eingabeSeriennummer() {
+	int seriennummer[12] = {0};
 	int korrekteEingabe = 0;
 
-	printf("Bitte geben ");
+	printf("Bitte geben Sie den ersten Buchstaben ein.\n");
+	seriennummer[0] = eingabeBuchstabe();
+	return 0;
 }
 
 
@@ -30,12 +34,12 @@ char eingabeBuchstabe() {
 	int korrekteEingabe = 1;				//Wenn falsche Eingabe, dann = 0
 
 	do {
-		printf("Bitte geben Sie einen Buchstaben ein: ");
+		printf("Buchstabe: ");
 
 		korrekteEingabe = scanf_s("%c", &eingabe, 1);
 
 		//Nur Buchstaben von a-z / A-Z
-		if ((eingabe > 90 && eingabe < 65) || (eingabe > 122 && eingabe < 97))
+		if ((eingabe > 90 || eingabe < 65) && (eingabe > 122 || eingabe < 97))
 			korrekteEingabe = 0;
 
 		if (getchar() != '\n') {
