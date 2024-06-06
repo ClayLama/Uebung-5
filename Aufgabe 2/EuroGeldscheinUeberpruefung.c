@@ -20,6 +20,12 @@ int main() {
 
 	eingabeSeriennummer(seriennummer);
 
+	printf("\nSeriennummer: ");
+	for (int i = 0; i < 2; i++)
+		printf("%c", seriennummer[i]);
+	for (int i = 2; i < 12; i++)
+		printf("%d", seriennummer[i]);
+
 	return 0;
 }
 
@@ -29,6 +35,7 @@ int eingabeSeriennummer(int seriennummer[]) {
 		mitteVierZiffern[4] = { 0 },
 		letzteZiffer[1] = { 0 };
 
+	//Eingabe der Seriennummer in 5 Stücken
 	printf("Im folgenden m\x81ssen Sie eine Seriennummer st%cckweise eingeben.\n\n", '\x81');
 
 	printf("Bitte geben Sie den ersten Buchstaben ein.\n");
@@ -46,9 +53,17 @@ int eingabeSeriennummer(int seriennummer[]) {
 	printf("Bitte geben Sie die letzte Ziffer ein.\n");
 	eingabeZahl(1, letzteZiffer);
 
+	//Zusammensetzung der Seriennummer
+	for (int i = 2; i <= 6; i++) {
+		seriennummer[i] = anfangFuenfZiffern[i - 2];
+	}
+	for (int i = 7; i <= 10; i++) {
+		seriennummer[i] = mitteVierZiffern[i - 7];
+	}
+	seriennummer[11] = letzteZiffer[0];
+
 	return 0;
 }
-
 
 int eingabeBuchstabe() {
 	char eingabe = 0;						//Eingegebener Buchstabe 
