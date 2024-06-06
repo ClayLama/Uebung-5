@@ -25,7 +25,8 @@ int main() {
 	for (int i = 0; i < 2; i++)
 		printf("%c", seriennummer[i]);
 	for (int i = 2; i < 12; i++)
-		printf("%d\n", seriennummer[i]);
+		printf("%d", seriennummer[i]);
+	printf("\n");
 
 	return 0;
 }
@@ -44,7 +45,7 @@ int eingabeSeriennummer(int seriennummer[]) {
 	printf("\nBitte geben Sie den zweiten Buchstaben ein.\n");
 	seriennummer[1] = eingabeBuchstabe();
 
-	printf("\nBitte geben Sie die ersten fünf Ziffern ein.\n");
+	printf("\nBitte geben Sie die ersten f\x81nf Ziffern ein.\n");
 	eingabeZahl(5, anfangFuenfZiffern);
 
 	printf("\nBitte geben Sie die nachfolgenden vier Ziffern ein.\n");
