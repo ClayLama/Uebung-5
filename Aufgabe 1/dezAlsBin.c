@@ -10,8 +10,8 @@ int eingabeInt(int minimalZahl, int maximalZahl);
 
 /// Ziel:	Die Binärdarstellung einer Dezimalzahl soll ermittelt werden
 /// Parameter: Eine Zahl dez, die Adresse eines Vektor zum Speichern der Binärdarstellung, die Länge des Vektors
-/// Return:	Return 0 bei erfolgreicher Umrechnung
-int dezAlsBin(int dez, int vektor[], int anzahl);
+/// Return:	/
+void dezAlsBin(int dez, int vektor[], int anzahl);
 
 /// Ziel:	Ein Vektor soll für den Benutzer ausgegeben werden
 /// Parameter: Die Adresse eines Vektors in dem die Binärzahl gespeichert ist, die länge des Vektors
@@ -80,8 +80,8 @@ int eingabeInt(int minimalZahl, int maximalZahl) {
 
 /// Ziel:	Die Binärdarstellung einer Dezimalzahl soll ermittelt werden
 /// Parameter: Eine Zahl dez, die Adresse eines Vektor zum Speichern der Binärdarstellung, die Länge des Vektors
-/// Return:	Return 0 bei erfolgreicher Umrechnung
-int dezAlsBin(int dez, int vektor[], int anzahl) {
+/// Return:	/
+void dezAlsBin(int dez, int vektor[], int anzahl) {
 	for (int i = anzahl - 1; i >= 0; i--) {
 		if ((int)pow(2, i) <= dez && dez) {
 			vektor[anzahl - 1 - i] = 1;
@@ -90,7 +90,7 @@ int dezAlsBin(int dez, int vektor[], int anzahl) {
 		else
 			vektor[anzahl - 1 - i] = 0;
 	}
-	return 0;
+	return;
 }
 
 /// Ziel:	Ein Vektor soll für den Benutzer ausgegeben werden
