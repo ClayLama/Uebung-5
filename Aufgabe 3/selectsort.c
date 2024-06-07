@@ -9,8 +9,8 @@
 void selectsort(int n, int arr[]);
 
 int main() {
-	int i;
-	int arr[LENGTH];
+	int i = 0;
+	int arr[LENGTH] = { 0 };
 	srand(100);
 	printf("Vor dem Sortieren\n");
 	for (i = 0; i < LENGTH; i++)
