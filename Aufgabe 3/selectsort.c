@@ -30,6 +30,13 @@ int main() {
 void selectsort(int n, int arr[]) {
 	int arrKopie[LENGTH] = { 0 };
 	int minZahl = 0;
+	int i = 0;
+
+	for (int j = 0; j < n - 1; j++) {
+		for (i; i < n - 1; i++) {
+
+		}
+	}
 
 	return;
 }

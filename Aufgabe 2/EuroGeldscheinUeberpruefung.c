@@ -33,10 +33,10 @@ void konvertiereQuersumme(int* quersumme);
 void ausgabeSeriennummer(int seriennummer[]);
 
 int main() {
-	int seriennummer[12] = { 0 };	//Eingegebene Seriennummer ([0-1] Buchstaben in Ascii Code, [2-10] Ziffern, [11] Prüfziffer)
-	int berechnetePruefziffer = 0;	//Prüfziffer wird durch Quersumme und anschließende Konvertierung berechnet
-	int schleife = 1;				//Wird auf 0 gesetzt, wenn Schleife beendet werden soll
-	char eingabeBuchstabe = '\0';	//Eingegebener Buchstabe, bei Frage ob Schleifenwiederholung
+	int seriennummer[12] = { 0 };		//Eingegebene Seriennummer ([0-1] Buchstaben in Ascii Code, [2-10] Ziffern, [11] Prüfziffer)
+	int berechnetePruefziffer = 0;		//Prüfziffer wird durch Quersumme und anschließende Konvertierung berechnet
+	int schleife = 1;					//Wird auf 0 gesetzt, wenn Schleife beendet werden soll
+	char eingabeBuchstabe = '\0';		//Eingegebener Buchstabe, bei Frage ob Schleifenwiederholung
 
 	//Startnachricht
 	printf("******************************************************\n");
@@ -44,35 +44,35 @@ int main() {
 	printf("*       %cberpr%cfung eines Euro-Geldscheines          *\n", '\x9a', '\x81');
 	printf("*                                                    *\n");
 	printf("******************************************************\n");
-	printf("Programm zur Ueberpruefung der Seriennummer eines Geldscheins.\n\n");
+	printf("Programm zur %cberpruefung der Seriennummer eines Geldscheins.\n\n", '\x9a');
 
-	while(schleife){
-	//Eingabe der Seriennummer in 3 Teilen
-	eingabeSeriennummer(seriennummer);
-	printf("\n");
+	while (schleife) {
+		//Eingabe der Seriennummer in 3 Teilen
+		eingabeSeriennummer(seriennummer);
+		printf("\n");
 
-	//Überprüfung der Prüfziffer
-	berechnetePruefziffer = berechnungQuersumme(seriennummer, 0, 10);
-	konvertiereQuersumme(&berechnetePruefziffer);
+		//Überprüfung der Prüfziffer
+		berechnetePruefziffer = berechnungQuersumme(seriennummer, 0, 10);
+		konvertiereQuersumme(&berechnetePruefziffer);
 
-	//Ausgabe vom Ergebnis
-	printf("Der Geldschein mit der Seriennummer: \"");
-	ausgabeSeriennummer(seriennummer);
-	if (berechnetePruefziffer == seriennummer[11]) {
-		printf("\" ist in Ordnung.\nDie Pruefziffer ist korrekt!");
+		//Ausgabe vom Ergebnis
+		printf("Der Geldschein mit der Seriennummer: \"");
+		ausgabeSeriennummer(seriennummer);
+		if (berechnetePruefziffer == seriennummer[11]) {
+			printf("\" ist in Ordnung.\nDie Pr%cfziffer ist korrekt!", '\x81');
+		}
+		else {
+			printf("\" ist gef\x84lscht.\nDie Pr%cfziffer ist falsch!", '\x81');
+		}
+
+		//Abfrage, ob Schleifenwiederholung
+		printf("\n\nM%cchten Sie eine weitere Seriennummer %cberpruefen? (J/N): ", '\x94', '\x81');
+		scanf_s("%c", &eingabeBuchstabe, 1);
+		while (getchar() != '\n');
+		printf("\n");
+		if (eingabeBuchstabe != 'J' && eingabeBuchstabe != 'j')
+			schleife = 0;
 	}
-	else {
-		printf("\" ist gefaelscht.\nDie Pruefziffer ist falsch!");
-	}
-
-	//Abfrage, ob Schleifenwiederholung
-	printf("\n\nM%cchten Sie eine weitere Seriennummer ueberpruefen? (J/N): ", '\x94');
-	scanf_s("%c", &eingabeBuchstabe, 1);
-	while (getchar() != '\n');
-	printf("\n");
-	if (eingabeBuchstabe != 'J' && eingabeBuchstabe != 'j')
-		schleife = 0;
-}
 	return 0;
 }
 
