@@ -17,6 +17,8 @@ void ausgabeSeriennummer(int seriennummer[]);
 int main() {
 	int seriennummer[12] = { 0 };	//Eingegebene Seriennummer ([0-1] Buchstaben in Ascii Code, [2-10] Ziffern, [11] Prüfziffer)
 	int berechnetePruefziffer = 0;	//Prüfziffer wird durch Quersumme und anschließende Konvertierung berechnet
+	int schleife = 1;				//Wird auf 0 gesetzt, wenn Schleife beendet werden soll
+	char eingabeBuchstabe = '\0';	//Eingegebener Buchstabe, bei Frage ob Schleifenwiederholung
 
 	//Startnachricht
 	printf("******************************************************\n");
@@ -26,22 +28,33 @@ int main() {
 	printf("******************************************************\n");
 	printf("Programm zur Ueberpruefung der Seriennummer eines Geldscheins.\n\n");
 
+	while(schleife){
 	//Eingabe der Seriennummer in 3 Teilen
 	eingabeSeriennummer(seriennummer);
+	printf("\n");
 
 	//Überprüfung der Prüfziffer
 	berechnetePruefziffer = berechnungQuersumme(seriennummer, 0, 10);
 	konvertiereQuersumme(&berechnetePruefziffer);
 
+	//Ausgabe vom Ergebnis
+	printf("Der Geldschein mit der Seriennummer: \"");
+	ausgabeSeriennummer(seriennummer);
 	if (berechnetePruefziffer == seriennummer[11]) {
-		printf("Die Pruefziffer ist in Ordnung!");
+		printf("\" ist in Ordnung.\nDie Pruefziffer ist korrekt!");
 	}
 	else {
-		printf("Die Pruefziffer ist falsch!\nDer Geldschein mit der Seriennummer: \"");
-		ausgabeSeriennummer(seriennummer);
-		printf("\" ist gefaelscht.\n");
+		printf("\" ist gefaelscht.\nDie Pruefziffer ist falsch!");
 	}
 
+	//Abfrage, ob Schleifenwiederholung
+	printf("\n\nM%cchten Sie eine weitere Seriennummer ueberpruefen? (J/N): ", '\x94');
+	scanf_s("%c", &eingabeBuchstabe, 1);
+	while (getchar() != '\n');
+	printf("\n");
+	if (eingabeBuchstabe != 'J' && eingabeBuchstabe != 'j')
+		schleife = 0;
+}
 	return 0;
 }
 
@@ -140,7 +153,7 @@ int berechnungQuersumme(int vektor[], int anfangszahl, int letzteZahl) {
 
 		//Quersumme falls Buchstabe => Zweistellige Zahl
 		if (querSummeBuchstabe > 9) {
-			ersteStelle = (int)(vektor[anfangszahl] / 10);
+			ersteStelle = (int)(querSummeBuchstabe / 10);
 			querSummeBuchstabe = ersteStelle + (querSummeBuchstabe - (ersteStelle * 10));
 		}
 		return querSummeBuchstabe + berechnungQuersumme(vektor, anfangszahl + 1, letzteZahl);
