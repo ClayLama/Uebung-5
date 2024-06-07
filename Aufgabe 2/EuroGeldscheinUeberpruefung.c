@@ -131,7 +131,6 @@ int eingabeBuchstabe() {
 	return eingabe;
 }
 
-
 /// Ziel:	Eingabe einer Zahl (mit bestimter Anzahl an Ziffern, gespeichert als Ziffern in Vektor)
 /// Parameter: Anzahl an Ziffern, die eingegeben werden sollen / Vektor, in dem Ziffern gespeichert werden sollen
 /// Return:	/
