@@ -2,16 +2,34 @@
 //Programm zur Überprüfung eines Euro-Geldscheines anhand der Seriennummer
 #include <stdio.h>
 
-int eingabeSeriennummer(int seriennummer[]);
+/// Ziel:	Es wird eine Seriennummer in drei Stücken eingegeben und validiert. Anschließend speichern in Parameter
+/// Parameter: Vektor, in dem die einzelnen Ziffern gespeichert werden
+/// Return:	/
+void eingabeSeriennummer(int seriennummer[]);
 
+/// Ziel:	Ein Buchstabe wird eingegeben und validiert
+/// Parameter: /
+/// Return:	Eingegebner Buchstabe als Ascii Code
 int eingabeBuchstabe();
 
-int eingabeZahl(int anzahlZiffern, int ausgabeZiffern[]);
+/// Ziel:	Eingabe einer Zahl (mit bestimter Anzahl an Ziffern, gespeichert als Ziffern in Vektor)
+/// Parameter: Anzahl an Ziffern, die eingegeben werden sollen / Vektor, in dem Ziffern gespeichert werden sollen
+/// Return:	/
+void eingabeZahl(int anzahlZiffern, int ausgabeZiffern[]);
 
+/// Ziel:	Rekursive Berechnung einer Quersumme aus Vektor mit Zahlen (Buchstaben werden in Zahlen kovertiert)
+/// Parameter: Vektor, mit einzelnen Ziffern / Zahlen, bei welchem Element die Quersumme anfängt und aufhört
+/// Return:	Berechnete Quersumme
 int berechnungQuersumme(int vektor[], int anfangszahl, int letzteZahl);
 
+/// Ziel: Berechnete Quersumme wird nach Anforderungen der Prüfziffer umgerechnet
+/// Parameter: Zu konvertierende Quersumme
+/// Return:	/
 void konvertiereQuersumme(int* quersumme);
 
+/// Ziel: Ausgabe in der Konsole der eingegebenen Seriennummer
+/// Parameter: Auszugebene Seriennummer
+/// Return:	/
 void ausgabeSeriennummer(int seriennummer[]);
 
 int main() {
@@ -58,10 +76,13 @@ int main() {
 	return 0;
 }
 
-int eingabeSeriennummer(int seriennummer[]) {
+/// Ziel:	Es wird eine Seriennummer in drei Stücken eingegeben und validiert. Anschließend speichern in Parameter
+/// Parameter: Vektor, in dem die einzelnen Ziffern gespeichert werden
+/// Return:	/
+void eingabeSeriennummer(int seriennummer[]) {
 	int eingabeZiffern[10] = { 0 };			//Die Ziffern der Seriennummer werden gespeichert
 
-	//Eingabe der Seriennummer in 5 Stücken
+	//Eingabe der Seriennummer in 3 Stücken
 	printf("Im folgenden m\x81ssen Sie eine Seriennummer st%cckweise eingeben.\n\n", '\x81');
 
 	printf("Bitte geben Sie den ersten Buchstaben ein.\n");
@@ -73,13 +94,16 @@ int eingabeSeriennummer(int seriennummer[]) {
 	printf("\nBitte geben Sie die zehn Ziffern ein.\n");
 	eingabeZahl(10, eingabeZiffern);
 
-	//Zusammensetzung der Seriennummer
+	//Zusammensetzung der Seriennummer und speichern als Vektor in seriennummer[]
 	for (int i = 2; i <= 11; i++) {
 		seriennummer[i] = eingabeZiffern[i - 2];
 	}
-	return 0;
+	return;
 }
 
+/// Ziel:	Ein Buchstabe wird eingegeben und validiert
+/// Parameter: /
+/// Return:	Eingegebner Buchstabe als Ascii Code
 int eingabeBuchstabe() {
 	char eingabe = 0;						//Eingegebener Buchstabe 
 	int korrekteEingabe = 1;				//Wenn falsche Eingabe, dann = 0
@@ -107,10 +131,15 @@ int eingabeBuchstabe() {
 	return eingabe;
 }
 
-int eingabeZahl(int anzahlZiffern, int ausgabeZiffern[]) {
+
+/// Ziel:	Eingabe einer Zahl (mit bestimter Anzahl an Ziffern, gespeichert als Ziffern in Vektor)
+/// Parameter: Anzahl an Ziffern, die eingegeben werden sollen / Vektor, in dem Ziffern gespeichert werden sollen
+/// Return:	/
+void eingabeZahl(int anzahlZiffern, int ausgabeZiffern[]) {
 	char eingabe[11] = { 0 };					//Eingegebener Zahl, einzeln als Ziffern gespeichert Ascii Buchstaben gespeichert
 	int korrekteEingabe = 1;					//Wenn falsche Eingabe, dann = 0
 
+	//Wird wiederholt bis korrekte Eingabe
 	do {
 		if (korrekteEingabe)
 			printf("Zahl: ");
@@ -129,7 +158,7 @@ int eingabeZahl(int anzahlZiffern, int ausgabeZiffern[]) {
 		if (eingabe[anzahlZiffern] != '\0')
 			korrekteEingabe = 0;
 
-		//Überprüfung ob alles Zahlen und speichern als integerzahl
+		//Überprüfung ob alles Zahlen und speichert ziffern als einzelne Integer
 		for (int i = 0; i < anzahlZiffern; i++) {
 			if (eingabe[i] < 48 || eingabe[i] > 57) {
 				korrekteEingabe = 0;
@@ -140,9 +169,12 @@ int eingabeZahl(int anzahlZiffern, int ausgabeZiffern[]) {
 
 	} while (!korrekteEingabe);
 
-	return 0;
+	return;
 }
 
+/// Ziel:	Rekursive Berechnung einer Quersumme aus Vektor mit Zahlen (Buchstaben werden in Zahlen kovertiert)
+/// Parameter: Vektor, mit einzelnen Ziffern / Zahlen, bei welchem Element die Quersumme anfängt und aufhört
+/// Return:	Berechnete Quersumme
 int berechnungQuersumme(int vektor[], int anfangszahl, int letzteZahl) {
 	int ersteStelle = 0;			//Wenn eine Zahl zweistellig, dann wird die erste Ziffer hier gespeichert
 	int querSummeBuchstabe = 0;		//Quersumme der Zahl wird hier gespeichert
@@ -165,6 +197,9 @@ int berechnungQuersumme(int vektor[], int anfangszahl, int letzteZahl) {
 	return vektor[anfangszahl] + berechnungQuersumme(vektor, anfangszahl + 1, letzteZahl);
 }
 
+/// Ziel: Berechnete Quersumme wird nach Anforderungen der Prüfziffer umgerechnet
+/// Parameter: Zu konvertierende Quersumme
+/// Return:	/
 void konvertiereQuersumme(int* quersumme) {
 	*quersumme = *quersumme % 9;
 	*quersumme = 7 - *quersumme;
@@ -173,6 +208,9 @@ void konvertiereQuersumme(int* quersumme) {
 	return;
 }
 
+/// Ziel: Ausgabe in der Konsole der eingegebenen Seriennummer
+/// Parameter: Auszugebene Seriennummer
+/// Return:	/
 void ausgabeSeriennummer(int seriennummer[]) {
 	for (int i = 0; i < 2; i++)
 		printf("%c", seriennummer[i]);
