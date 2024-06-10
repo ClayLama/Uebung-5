@@ -18,7 +18,7 @@ void dezAlsBin(int dez, int vektor[], int anzahl);
 /// Return:	Return 0 bei erfolgreichem Durchlauf
 int druckeVektor(int* vektor, int anzahl, int eingegebeneZahl);
 
-main() {
+int main() {
 	int korrekteEingabe = 0;		//Variable zur Abfrage einer korrekten Eingabe
 	int zahlBenutzer = 0;			//Speichert die Nutzereingabe 
 	int vektor[8] = { 0 };			//Speichert die Binärdarstellung der Zahl
