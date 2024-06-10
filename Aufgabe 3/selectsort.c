@@ -28,15 +28,25 @@ int main() {
 }
 
 void selectsort(int n, int arr[]) {
-	int arrKopie[LENGTH] = { 0 };
-	int minZahl = 0;
+	int j = 0;
 	int i = 0;
+	int min = 0;
+	int hilf = 0;
 
-	for (int j = 0; j < n - 1; j++) {
-		for (i; i < n - 1; i++) {
+	while (j < n - 1) {
+		min = j;
+		i = j + 1;
+		while (i < n) {
+			if (arr[i] < arr[min]) {
+				min = i;
 
+			}
+			i++;
 		}
+		hilf = arr[j];
+		arr[j] = arr[min];
+		arr[min] = hilf;
+		j++;
 	}
-
 	return;
 }
