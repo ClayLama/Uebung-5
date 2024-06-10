@@ -82,6 +82,7 @@ int eingabeInt(int minimalZahl, int maximalZahl) {
 /// Parameter: Eine Zahl dez, die Adresse eines Vektor zum Speichern der Binärdarstellung, die Länge des Vektors
 /// Return:	/
 void dezAlsBin(int dez, int vektor[], int anzahl) {
+	//
 	for (int i = anzahl - 1; i >= 0; i--) {
 		if ((int)pow(2, i) <= dez && dez) {
 			vektor[anzahl - 1 - i] = 1;

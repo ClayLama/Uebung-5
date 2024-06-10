@@ -159,7 +159,7 @@ void eingabeZahl(int anzahlZiffern, int ausgabeZiffern[]) {
 
 		//Überprüfung ob alles Zahlen und speichert ziffern als einzelne Integer
 		for (int i = 0; i < anzahlZiffern; i++) {
-			if (eingabe[i] < 48 || eingabe[i] > 57) {
+			if (eingabe[i] < '0' || eingabe[i] > '9') {
 				korrekteEingabe = 0;
 
 			}
@@ -180,6 +180,7 @@ int berechnungQuersumme(int vektor[], int anfangszahl, int letzteZahl) {
 
 	//Buchstaben werden durch Zahl ersetzt
 	if (vektor[anfangszahl] > 57) {
+		//65 ist A, für die Position im Alaphabet muss entsprechend 64 abgezogen werden
 		querSummeBuchstabe = vektor[anfangszahl] - 64;
 
 		//Quersumme falls Buchstabe => Zweistellige Zahl
@@ -196,9 +197,12 @@ int berechnungQuersumme(int vektor[], int anfangszahl, int letzteZahl) {
 	return vektor[anfangszahl] + berechnungQuersumme(vektor, anfangszahl + 1, letzteZahl);
 }
 
-/// Ziel: Berechnete Quersumme wird nach Anforderungen der Prüfziffer umgerechnet
-/// Parameter: Zu konvertierende Quersumme
-/// Return:	/
+/* 
+Ziel: Berechnete Quersumme wird nach Anforderungen der Prüfziffer umgerechnet
+Parameter: Zu konvertierende Quersumme
+Return:	
+ */
+// int berechnePreufsumme(int quersumme)
 void konvertiereQuersumme(int* quersumme) {
 	*quersumme = *quersumme % 9;
 	*quersumme = 7 - *quersumme;

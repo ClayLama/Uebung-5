@@ -15,7 +15,7 @@ int main() {
 	int i = 0;			
 	int arr[LENGTH] = { 0 };		//Array mit Zufallszahlen
 
-	srand(100);
+	srand(time(NULL));
 
 	//Ausgabe Array vor dem Sortieren
 	printf("Vor dem Sortieren\n");
